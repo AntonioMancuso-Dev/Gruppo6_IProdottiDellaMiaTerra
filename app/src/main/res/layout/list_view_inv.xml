@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:id="@+id/textViewDescr"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <NumberPicker
+            android:id="@+id/numPick"
+            android:layout_width="68dp"
+            android:layout_height="46dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.676"
+            app:layout_constraintStart_toStartOf="@+id/textViewDescr"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="29dp"
+            android:layout_height="23dp"
+            android:adjustViewBounds="true"
+            android:background="#FFFFFF"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toStartOf="@+id/textViewDescr"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/xicon" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
