@@ -2,11 +2,20 @@ package com.example.iprodottidellamiaterra;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -29,6 +38,13 @@ public class InventarioActivity extends AppCompatActivity {
             Prodotto prodotto = new Prodotto(nomi[i], "2");
             customAdapter.add(prodotto);
         }
+
+
+    }
+
+    public void aggiungiInventarioClicked(View v) {
+        FragmentInventario fragmentInventario = new FragmentInventario();
+        fragmentInventario.show(getSupportFragmentManager(), "Fg");
     }
 
 }
