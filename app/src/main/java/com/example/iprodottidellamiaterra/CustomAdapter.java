@@ -33,8 +33,9 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
         descr.setText(p.getDescr());
 
         NumberPicker numberPicker = v.findViewById(R.id.numPick);
-        numberPicker.setMaxValue(1000);
+        numberPicker.setMaxValue(10000);
         numberPicker.setMinValue(1);
+        numberPicker.setValue(Integer.parseInt(p.getQnt()));
         numberPicker.setWrapSelectorWheel(false);
 
         return v;

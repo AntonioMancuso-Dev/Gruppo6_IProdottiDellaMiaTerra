@@ -1,6 +1,8 @@
 package com.example.iprodottidellamiaterra;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,17 +29,17 @@ public class InventarioActivity extends AppCompatActivity {
         setContentView(R.layout.inventario_activity);
 
 
-        String[] nomi = {"Pacchetto di semi di pomodoro", "Bottiglia fertilizzante"};
+        Context context = getApplicationContext();
+        SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.file_name), Context.MODE_PRIVATE);
+        int qnt = sharedPref.getInt("Insalata", 10000);
         listView = findViewById(R.id.inventarioLv);
 
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.list_view_inv, new ArrayList<Prodotto>());
 
         listView.setAdapter(customAdapter);
 
-        for(int i = 0; i < nomi.length; i++) {
-            Prodotto prodotto = new Prodotto(nomi[i], "2");
-            customAdapter.add(prodotto);
-        }
+        Prodotto prodotto = new Prodotto("Insalata", ""+ qnt);
+        customAdapter.add(prodotto);
 
 
     }
