@@ -48,20 +48,6 @@ public class FragmentInventario extends DialogFragment {
         builder.setPositiveButton("ANNULLA", new DialogInterface.OnClickListener() {
            @Override
            public void onClick(DialogInterface dialog, int which) {
-               Context context = getActivity();
-               SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
-               SharedPreferences.Editor editor = sharedPref.edit();
-
-               EditText descTx = v.findViewById(R.id.descTx);
-               String desc = descTx.getText().toString();
-
-               EditText qntTx = v.findViewById(R.id.qntTx);
-               String qnt = qntTx.getText().toString();
-               int finQnt = Integer.parseInt(qnt);
-
-
-               editor.putInt("OK", 1);
-               editor.commit();
                dismiss();
            }
        });
@@ -73,28 +59,15 @@ public class FragmentInventario extends DialogFragment {
                SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
                SharedPreferences.Editor editor = sharedPref.edit();
 
-               LayoutInflater vi = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-               View nnn = vi.inflate(R.layout.fgm_pop, null);
-               TextView tv = nnn.findViewById(R.id.nomeProdotto);
-               String np = tv.getText().toString();
-               EditText descTx = nnn.findViewById(R.id.descTx);
-               String desc = descTx.getText().toString();
-               desc.length();
+              String desc =  ((EditText) getDialog().findViewById(R.id.descTx)).getText().toString();
+              String qntString = ((EditText) getDialog().findViewById(R.id.qntTx)).getText().toString();
+              int qnt = Integer.parseInt(qntString);
 
-               /*
-               CON QUESTA RIGA DI CODICE POSSO PRENDERE I DATI INSERITI NEL TEXTEDIT ------------- IMPORTANTE!!!!!!!!
-                */
-              String d =  ((EditText) getDialog().findViewById(R.id.descTx)).getText().toString();
+              editor.putInt(desc, qnt);
+              editor.apply();
+              dismiss();
+              getActivity().recreate();
 
-
-               //EditText qntTx = v.findViewById(R.id.qntTx);
-              // String qnt = qntTx.getText().toString();
-               //int finQnt = Integer.parseInt(qnt);
-
-
-               editor.putInt("OK", 1);
-               editor.apply();
-               dismiss();
            }
        });
 

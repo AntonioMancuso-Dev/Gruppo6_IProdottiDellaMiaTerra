@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.NumberPicker;
@@ -17,9 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 public class InventarioActivity extends AppCompatActivity {
     ListView listView;
@@ -28,18 +32,21 @@ public class InventarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inventario_activity);
 
-
-        Context context = getApplicationContext();
-        SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.file_name), Context.MODE_PRIVATE);
-        int qnt = sharedPref.getInt("Insalata", 10000);
         listView = findViewById(R.id.inventarioLv);
 
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.list_view_inv, new ArrayList<Prodotto>());
 
         listView.setAdapter(customAdapter);
 
-        Prodotto prodotto = new Prodotto("Insalata", ""+ qnt);
-        customAdapter.add(prodotto);
+        Context context = getApplicationContext();
+        SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+        Map<String, ?> map = sharedPref.getAll();
+        for (Map.Entry<String, ?> entry : map.entrySet()) {
+            String k = entry.getKey();
+            int v = (Integer)entry.getValue();
+            Prodotto prodotto = new Prodotto(k, ""+ v);
+            customAdapter.add(prodotto);
+        }
 
 
     }
@@ -47,6 +54,25 @@ public class InventarioActivity extends AppCompatActivity {
     public void aggiungiInventarioClicked(View v) {
         FragmentInventario fragmentInventario = new FragmentInventario();
         fragmentInventario.show(getSupportFragmentManager(), "Fg");
+    }
+
+    public void cancelCrossClicked(View v) {
+        Context context = getApplicationContext();
+        SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+        ViewParent parent = v.getParent();
+        ConstraintLayout constraintLayout = (ConstraintLayout)parent;
+        TextView desc = constraintLayout.findViewById(R.id.textViewDescr);
+        String descr =  desc.getText().toString();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(descr);
+        editor.commit();
+        this.recreate();
+    }
+
+    //CONTINUARE METODO
+    public void scrollNumPick(View v) {
+        NumberPicker numberPicker = (NumberPicker)v;
+       // numberPicker.setOnScrollListener();
     }
 
 }

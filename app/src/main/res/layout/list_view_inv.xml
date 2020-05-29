@@ -24,7 +24,7 @@
             android:id="@+id/numPick"
             android:layout_width="68dp"
             android:layout_height="46dp"
-
+            android:onClick="scrollNumPick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.676"
@@ -38,6 +38,7 @@
             android:adjustViewBounds="true"
             android:background="#FFFFFF"
             android:scaleType="centerInside"
+            android:onClick="cancelCrossClicked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.955"
