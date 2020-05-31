@@ -44,7 +44,6 @@ public class FragmentInventario extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(R.layout.fgm_pop);
-
         builder.setPositiveButton("ANNULLA", new DialogInterface.OnClickListener() {
            @Override
            public void onClick(DialogInterface dialog, int which) {
