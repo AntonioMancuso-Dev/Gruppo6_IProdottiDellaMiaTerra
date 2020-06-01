@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".InventarioActivity" />
+        <activity android:name=".ColtivazioniActivity"></activity>
     </application>
 
 </manifest>

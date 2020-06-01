@@ -9,26 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="178dp"
-            android:layout_height="41dp"
-            android:onClick="aggiungiColtivazioniClicked"
-            android:text="AGGIUNGI"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.977" />
-
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewColtDes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prodotto"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.051"
@@ -37,12 +22,10 @@
             app:layout_constraintVertical_bias="0.066" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewColtTempo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tempo"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.461"
@@ -50,28 +33,33 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.066" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Info"
-            android:textSize="24sp"
-            android:textStyle="bold"
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:onClick="infoClicked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.793"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066" />
+            app:layout_constraintVertical_bias="0.066"
+            app:srcCompat="@drawable/information" />
 
-        <ListView
-            android:id="@+id/coltivazioniLv"
-            android:layout_width="405dp"
-            android:layout_height="511dp"
+        <ImageButton
+            android:id="@+id/cancelColtivazione"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:onClick="cancelColtivazioneCross"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.991"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.569" />
+            app:layout_constraintVertical_bias="0.066"
+            app:srcCompat="@drawable/xicon" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -39,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void coltivazioniClick(View v) {
-        Context context = getApplicationContext();
-        CharSequence text = "Hello toast!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        Intent i = new Intent(this, ColtivazioniActivity.class);
+        startActivity(i);
     }
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nomeProdotto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOME PRODOTTO"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_marginLeft="70dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/nomeTx"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border">
+
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="40dp"
+        android:text="DESCRIZIONE PRODOTTO"
+        android:textSize="30dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/desProd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border">
+
+    </EditText>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- <Button
+             android:id="@+id/popAdd"
+             android:layout_marginLeft="30dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="AGGIUNGI">
+
+         </Button>
+
+         <Button
+             android:id="@+id/popCanc"
+             android:layout_marginLeft="150dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="ANNULLA">
+
+         </Button> -->
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
