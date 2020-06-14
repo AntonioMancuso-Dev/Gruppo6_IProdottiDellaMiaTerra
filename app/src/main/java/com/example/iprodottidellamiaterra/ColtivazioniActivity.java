@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,8 @@ import java.util.Map;
 public class ColtivazioniActivity extends AppCompatActivity {
     ListView listView;
     ColtivazioniActivity coltivazioniActivity = this;
+    SearchView searchView;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceBundle) {
@@ -30,6 +33,55 @@ public class ColtivazioniActivity extends AppCompatActivity {
         setContentView(R.layout.coltivazioni_activity);
 
         listView = findViewById(R.id.coltivazioniLv);
+        searchView = findViewById(R.id.searchBtn);
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                searchView.setQuery(null, true);
+                coltivazioniActivity.recreate();
+
+                return true;
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                CustomAdapterColtivazioni customAdapterColtivazioni = new CustomAdapterColtivazioni(context, R.layout.list_view_colt, new ArrayList<Prodotto>());
+                listView.setAdapter(customAdapterColtivazioni);
+
+                Context context2 = getApplicationContext();
+                SharedPreferences sharedPref2 = context.getSharedPreferences("Coltivazioni", Context.MODE_PRIVATE);
+                Map<String, ?> map2 = sharedPref2.getAll();
+                for (Map.Entry<String, ?> entry2 : map2.entrySet()) {
+                    int qryLngt = query.length();
+                    boolean eq = false;
+
+                    String k2 = entry2.getKey();
+                    String info2 = (String)entry2.getValue();
+                    for(int i = 0; i < qryLngt; i++) {
+                        if(k2.toUpperCase().substring(0, qryLngt).equals(query.toUpperCase())) {
+                            eq = true;
+                        } else
+                            eq = false;
+                    }
+
+                    if(eq) {
+                        Prodotto prodotto = new Prodotto(k2, info2);
+                        customAdapterColtivazioni.add(prodotto);
+                    }
+                }
+
+                //}
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         CustomAdapterColtivazioni customAdapterColtivazioni = new CustomAdapterColtivazioni(this, R.layout.list_view_colt, new ArrayList<Prodotto>());
         listView.setAdapter(customAdapterColtivazioni);

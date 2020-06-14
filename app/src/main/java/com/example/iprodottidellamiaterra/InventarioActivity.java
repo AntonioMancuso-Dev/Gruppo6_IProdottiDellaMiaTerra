@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,8 @@ public class InventarioActivity extends AppCompatActivity {
     ListView listView;
     InventarioActivity inventarioActivity = this;
     NumberPicker numberPicker;
+    SearchView searchView;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,46 @@ public class InventarioActivity extends AppCompatActivity {
         setContentView(R.layout.inventario_activity);
 
         listView = findViewById(R.id.inventarioLv);
+        searchView = findViewById(R.id.searchInventario);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                CustomAdapter customAdapterColtivazioni = new CustomAdapter(context, R.layout.list_view_inv, new ArrayList<Prodotto>());
+                listView.setAdapter(customAdapterColtivazioni);
+
+                Context context2 = getApplicationContext();
+                SharedPreferences sharedPref2 = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+                Map<String, ?> map2 = sharedPref2.getAll();
+                for (Map.Entry<String, ?> entry2 : map2.entrySet()) {
+                    int qryLngt = query.length();
+                    boolean eq = false;
+
+                    String k2 = entry2.getKey();
+                    int info2 =  (Integer)entry2.getValue();
+                    for (int i = 0; i < qryLngt; i++) {
+                        if (k2.toUpperCase().substring(0, qryLngt).equals(query.toUpperCase())) {
+                            eq = true;
+                        } else
+                            eq = false;
+                    }
+
+                    if (eq) {
+                        Prodotto prodotto = new Prodotto(k2, ""+ info2);
+                        customAdapterColtivazioni.add(prodotto);
+                    }
+                }
+
+                //}
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.list_view_inv, new ArrayList<Prodotto>());
 
@@ -49,13 +92,14 @@ public class InventarioActivity extends AppCompatActivity {
         Map<String, ?> map = sharedPref.getAll();
         for (Map.Entry<String, ?> entry : map.entrySet()) {
             String k = entry.getKey();
-            int v = (Integer)entry.getValue();
-            Prodotto prodotto = new Prodotto(k, ""+ v);
+            int v = (Integer) entry.getValue();
+            Prodotto prodotto = new Prodotto(k, "" + v);
             customAdapter.add(prodotto);
         }
 
-
     }
+
+
 
     public void aggiungiInventarioClicked(View v) {
         FragmentInventario fragmentInventario = new FragmentInventario();
