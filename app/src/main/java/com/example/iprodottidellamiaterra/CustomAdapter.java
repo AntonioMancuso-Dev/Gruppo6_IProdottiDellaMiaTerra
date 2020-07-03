@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -36,6 +39,12 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
         if(v == null) {
             v = inflater.inflate(R.layout.list_view_inv, null);
         }
+
+        //mod ROs
+        final TextView numeroQ = v.findViewById(R.id.numeroQ);
+        numeroQ.setText(p.getQnt());
+        Button plus = v.findViewById(R.id.plus);
+        //Fine mod
 
 
         TextView descr = v.findViewById(R.id.textViewDescr);
@@ -80,7 +89,50 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
 
                 }
                 }
+
+            //Modifiche Rosario
+
+            public void plusClick() {
+                String val = new String();
+                int value = 0;
+                val = (String) numeroQ.getText();
+                value = Integer.parseInt(val);
+                value++;
+                numeroQ.setText(""+value);
+                Context context = getContext();
+                SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.remove(p.getDescr());
+                editor.commit();
+                editor.putInt(p.getDescr(), value);
+                editor.commit();
+            }
+
+            public void minusClick() {
+                String val = new String();
+                int value = 0;
+                val = (String) numeroQ.getText();
+                value = Integer.parseInt(val);
+                if(value!=1){
+                    value--;
+                }
+                else{
+                    value=value;
+                }
+                numeroQ.setText(""+value);
+                Context context = getContext();
+                SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.remove(p.getDescr());
+                editor.commit();
+                editor.putInt(p.getDescr(), value);
+                editor.commit();
+            }
+            //FINE MODIFICHE
         });
+
+
+
 
         numberPicker.setMaxValue(10000);
         numberPicker.setMinValue(1);
@@ -89,4 +141,5 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
 
         return v;
     }
+
 }

@@ -36,6 +36,8 @@ public class InventarioActivity extends AppCompatActivity {
     SearchView searchView;
     Context context = this;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,9 @@ public class InventarioActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.inventarioLv);
         searchView = findViewById(R.id.searchInventario);
+
+
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -107,9 +112,13 @@ public class InventarioActivity extends AppCompatActivity {
     }
 
     public void cancelCrossClicked(final View v) {
+        ViewParent parent = v.getParent();
+        ConstraintLayout constraintLayout = (ConstraintLayout)parent;
+        TextView desc = constraintLayout.findViewById(R.id.textViewDescr);
+        final String descr =  desc.getText().toString();
         AlertDialog alertDialog = new AlertDialog.Builder(InventarioActivity.this).create();
-        alertDialog.setTitle("Attenzione");
-        alertDialog.setMessage("Quest'operazione cancellerà l'elemento selezionato dall'inventario. Sei sicuro di voler procedere?");
+        alertDialog.setTitle("Sicuro di voler rimuovere il prodotto?");
+        alertDialog.setMessage("Prodotto: " + descr);
         alertDialog.setButton("ANNULLA", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -121,10 +130,7 @@ public class InventarioActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Context context = getApplicationContext();
                 SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
-                ViewParent parent = v.getParent();
-                ConstraintLayout constraintLayout = (ConstraintLayout)parent;
-                TextView desc = constraintLayout.findViewById(R.id.textViewDescr);
-                String descr =  desc.getText().toString();
+
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.remove(descr);
                 editor.commit();
@@ -133,6 +139,8 @@ public class InventarioActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
+
+
 
 
     public void scrollNumPick(View v) {

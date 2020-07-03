@@ -3,23 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consLay"
         android:layout_width="match_parent"
-        android:layout_height="54dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewDescr"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="TextView"
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="41dp"
+            android:layout_height="23dp"
+            android:background="@drawable/rounded"
+            android:text="+"
+            android:onClick="plusClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintHorizontal_bias="0.405"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.33" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="41dp"
+            android:layout_height="23dp"
+            android:background="@drawable/rounded"
+            android:text="-"
+            android:onClick="minusClick"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.405"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.692" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="20dp"
+            android:layout_height="23dp"
+            android:adjustViewBounds="true"
+            android:background="#FFFFFF"
+            android:onClick="cancelCrossClicked"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="@+id/textViewDescr"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.515"
+            app:srcCompat="@drawable/xicon" />
 
         <NumberPicker
             android:id="@+id/numPick"
@@ -30,22 +63,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.676"
             app:layout_constraintStart_toStartOf="@+id/textViewDescr"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.515" />
 
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="29dp"
-            android:layout_height="23dp"
-            android:adjustViewBounds="true"
-            android:background="#FFFFFF"
-            android:scaleType="centerInside"
-            android:onClick="cancelCrossClicked"
+        <TextView
+            android:id="@+id/textViewDescr"
+            android:layout_width="107dp"
+            android:layout_height="135dp"
+            android:gravity="center"
+            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
-            app:layout_constraintStart_toStartOf="@+id/textViewDescr"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/xicon" />
+            app:layout_constraintVertical_bias="0.533" />
+
+        <TextView
+            android:id="@+id/numeroQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.414"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.511" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

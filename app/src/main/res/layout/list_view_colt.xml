@@ -3,62 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
             android:id="@+id/textViewColtDes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="107dp"
+            android:layout_height="135dp"
+            android:gravity="center"
             android:text="TextView"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintHorizontal_bias="0.082"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066" />
+            app:layout_constraintVertical_bias="0.533" />
 
         <TextView
             android:id="@+id/textViewColtTempo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="107dp"
+            android:layout_height="135dp"
+            android:gravity="center"
             android:text="TextView"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066" />
+            app:layout_constraintVertical_bias="0.533" />
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="48dp"
+            android:layout_width="25dp"
             android:layout_height="40dp"
-            android:scaleType="centerInside"
+            android:background="#FFFFFF"
             android:onClick="infoClicked"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.793"
+            app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066"
+            app:layout_constraintVertical_bias="0.445"
             app:srcCompat="@drawable/information" />
 
         <ImageButton
             android:id="@+id/cancelColtivazione"
-            android:layout_width="48dp"
+            android:layout_width="25dp"
             android:layout_height="40dp"
-            android:scaleType="centerInside"
+            android:background="#FFFFFF"
             android:onClick="cancelColtivazioneCross"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.066"
+            app:layout_constraintVertical_bias="0.445"
             app:srcCompat="@drawable/xicon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,4 +77,6 @@ public class FragmentInventario extends DialogFragment {
         this.dismiss();
     }*/
 
+
+
 }

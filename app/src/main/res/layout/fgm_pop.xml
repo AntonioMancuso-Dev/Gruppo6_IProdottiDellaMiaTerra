@@ -10,7 +10,9 @@
         android:text="NOME PRODOTTO"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_marginLeft="70dp">
+        android:layout_marginLeft="50dp"
+        android:textColor="#000000"
+        >
 
     </TextView>
 
@@ -18,7 +20,7 @@
         android:id="@+id/descTx"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp">
 
     </EditText>
@@ -26,11 +28,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="105dp"
         android:layout_marginTop="40dp"
-        android:text="QUANTITA' PRODOTTO"
+        android:text="QUANTITÁ"
         android:textSize="30dp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:textColor="#000000">
 
     </TextView>
 
@@ -38,7 +41,7 @@
         android:id="@+id/qntTx"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"
         android:inputType="number">
 

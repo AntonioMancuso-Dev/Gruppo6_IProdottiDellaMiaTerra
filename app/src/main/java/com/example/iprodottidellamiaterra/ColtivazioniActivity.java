@@ -104,9 +104,13 @@ public class ColtivazioniActivity extends AppCompatActivity {
     }
 
     public void cancelColtivazioneCross(final View v) {
+        ViewParent parent = v.getParent();
+        ConstraintLayout constraintLayout = (ConstraintLayout)parent;
+        TextView desc = constraintLayout.findViewById(R.id.textViewColtDes);
+        final String descr =  desc.getText().toString();
         AlertDialog alertDialog = new AlertDialog.Builder(ColtivazioniActivity.this).create();
-        alertDialog.setTitle("Attenzione");
-        alertDialog.setMessage("Quest'operazione cancellerà l'elemento selezionato dalle coltivazioni. Sei sicuro di voler procedere?");
+        alertDialog.setTitle("Sicuro di voler rimuovere il prodotto?");
+        alertDialog.setMessage("Prodotto: " + descr);
         alertDialog.setButton("ANNULLA", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -118,10 +122,8 @@ public class ColtivazioniActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Context context = getApplicationContext();
                 SharedPreferences sharedPref = context.getSharedPreferences("Coltivazioni", Context.MODE_PRIVATE);
-                ViewParent parent = v.getParent();
-                ConstraintLayout constraintLayout = (ConstraintLayout)parent;
-                TextView desc = constraintLayout.findViewById(R.id.textViewColtDes);
-                String descr =  desc.getText().toString();
+
+
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.remove(descr);
                 editor.commit();
@@ -141,8 +143,8 @@ public class ColtivazioniActivity extends AppCompatActivity {
         String info = sharedPreferences.getString(descr, "null");
 
         AlertDialog alertDialog = new AlertDialog.Builder(ColtivazioniActivity.this).create();
-        alertDialog.setTitle("INFORMAZIONI PRODOTTO");
-        alertDialog.setMessage("Prodotto:          " + descr + "\n" + "INFO:          " + info);
+        alertDialog.setTitle("          INFORMAZIONI PRODOTTO");
+        alertDialog.setMessage("Prodotto: " + descr + "\n \n" + "                                   INFO          " + "\n" + info);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "CHIUDI",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
