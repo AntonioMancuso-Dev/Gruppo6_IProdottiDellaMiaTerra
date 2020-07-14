@@ -59,12 +59,16 @@ public class ColtivazioniActivity extends AppCompatActivity {
 
                     String k2 = entry2.getKey();
                     String info2 = (String)entry2.getValue();
+
+                    eq = k2.startsWith(query);
+                    /*
                     for(int i = 0; i < qryLngt; i++) {
                         if(k2.toUpperCase().substring(0, qryLngt).equals(query.toUpperCase())) {
                             eq = true;
                         } else
                             eq = false;
                     }
+                    */
 
                     if(eq) {
                         Prodotto prodotto = new Prodotto(k2, info2);
