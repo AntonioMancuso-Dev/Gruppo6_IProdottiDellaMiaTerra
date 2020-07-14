@@ -47,10 +47,8 @@ public class FragmentColtivazioni extends DialogFragment {
                 Context context = getActivity();
                 SharedPreferences sharedPref = context.getSharedPreferences("Coltivazioni", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-
                 String nomeProdotto = ((EditText) getDialog().findViewById(R.id.nomeTx)).getText().toString();
                 String descProd = ((EditText) getDialog().findViewById(R.id.desProd)).getText().toString();
-
                 editor.putString(nomeProdotto, descProd);
                 editor.apply();
                 dismiss();

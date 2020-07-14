@@ -44,6 +44,7 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
         final TextView numeroQ = v.findViewById(R.id.numeroQ);
         numeroQ.setText(p.getQnt());
         Button plus = v.findViewById(R.id.plus);
+        Button minus = v.findViewById(R.id.minus);
         //Fine mod
 
 
@@ -90,9 +91,13 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
                 }
                 }
 
-            //Modifiche Rosario
 
-            public void plusClick() {
+        });
+
+        plus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
                 String val = new String();
                 int value = 0;
                 val = (String) numeroQ.getText();
@@ -107,8 +112,12 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
                 editor.putInt(p.getDescr(), value);
                 editor.commit();
             }
+        });
 
-            public void minusClick() {
+        minus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
                 String val = new String();
                 int value = 0;
                 val = (String) numeroQ.getText();
@@ -128,10 +137,50 @@ public class CustomAdapter extends ArrayAdapter<Prodotto> {
                 editor.putInt(p.getDescr(), value);
                 editor.commit();
             }
-            //FINE MODIFICHE
         });
 
 
+        //Modifiche Rosario
+/*
+        public void plusClick() {
+            String val = new String();
+            int value = 0;
+            val = (String) numeroQ.getText();
+            value = Integer.parseInt(val);
+            value++;
+            numeroQ.setText(""+value);
+            Context context = getContext();
+            SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.remove(p.getDescr());
+            editor.commit();
+            editor.putInt(p.getDescr(), value);
+            editor.commit();
+        }
+
+        public void minusClick() {
+            String val = new String();
+            int value = 0;
+            val = (String) numeroQ.getText();
+            value = Integer.parseInt(val);
+            if(value!=1){
+                value--;
+            }
+            else{
+                value=value;
+            }
+            numeroQ.setText(""+value);
+            Context context = getContext();
+            SharedPreferences sharedPref = context.getSharedPreferences("Ok", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.remove(p.getDescr());
+            editor.commit();
+            editor.putInt(p.getDescr(), value);
+            editor.commit();
+        }
+        //FINE MODIFICHE
+
+*/
 
 
         numberPicker.setMaxValue(10000);
