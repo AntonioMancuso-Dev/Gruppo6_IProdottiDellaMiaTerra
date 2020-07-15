@@ -154,7 +154,8 @@ public class ColtivazioniActivity extends AppCompatActivity {
         ConstraintLayout constraintLayout = (ConstraintLayout)parent;
         TextView desc = constraintLayout.findViewById(R.id.textViewColtDes);
         String descr =  desc.getText().toString();
-        String info = sharedPreferences.getString(descr, "null");
+        String info = sharedPreferences.getString(descr, "");
+        info = info.substring(0, info.indexOf("#_#"));
 
         AlertDialog alertDialog = new AlertDialog.Builder(ColtivazioniActivity.this).create();
         alertDialog.setTitle("          INFORMAZIONI PRODOTTO");
