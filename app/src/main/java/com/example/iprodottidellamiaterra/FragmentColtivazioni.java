@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import java.util.Date;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -47,9 +49,11 @@ public class FragmentColtivazioni extends DialogFragment {
                 Context context = getActivity();
                 SharedPreferences sharedPref = context.getSharedPreferences("Coltivazioni", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
+
                 String nomeProdotto = ((EditText) getDialog().findViewById(R.id.nomeTx)).getText().toString();
                 String descProd = ((EditText) getDialog().findViewById(R.id.desProd)).getText().toString();
-                editor.putString(nomeProdotto, descProd);
+                editor.putString(nomeProdotto, descProd + "#_#" + String.valueOf(new Date().getTime()));
+
                 editor.apply();
                 dismiss();
                 getActivity().recreate();

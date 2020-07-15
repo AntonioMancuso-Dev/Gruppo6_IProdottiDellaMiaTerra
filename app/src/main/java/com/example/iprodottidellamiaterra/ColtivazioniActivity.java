@@ -58,9 +58,15 @@ public class ColtivazioniActivity extends AppCompatActivity {
                     boolean eq = false;
 
                     String k2 = entry2.getKey();
-                    String info2 = (String)entry2.getValue();
+                    String value = (String)entry2.getValue();
+                    String info = value.substring(0, value.indexOf("#_#"));
+                    Date startDate = new Date(Long.parseLong(value.substring(info.length() + 3, value.length())));
 
-                    eq = k2.startsWith(query);
+
+
+
+
+                    eq = k2.toUpperCase().startsWith(query.toUpperCase());
                     /*
                     for(int i = 0; i < qryLngt; i++) {
                         if(k2.toUpperCase().substring(0, qryLngt).equals(query.toUpperCase())) {
@@ -71,7 +77,7 @@ public class ColtivazioniActivity extends AppCompatActivity {
                     */
 
                     if(eq) {
-                        Prodotto prodotto = new Prodotto(k2, info2);
+                        Prodotto prodotto = new Prodotto(k2, info, startDate);
                         customAdapterColtivazioni.add(prodotto);
                     }
                 }
@@ -93,10 +99,14 @@ public class ColtivazioniActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         SharedPreferences sharedPref = context.getSharedPreferences("Coltivazioni", Context.MODE_PRIVATE);
         Map<String, ?> map = sharedPref.getAll();
+
+
         for (Map.Entry<String, ?> entry : map.entrySet()) {
             String k = entry.getKey();
-            String info = (String)entry.getValue();
-            Prodotto prodotto = new Prodotto(k, info);
+            String value = (String)entry.getValue();
+            String info = value.substring(0, value.indexOf("#_#"));
+            Date startDate = new Date(Long.parseLong(value.substring(info.length() + 3, value.length())));
+            Prodotto prodotto = new Prodotto(k, info, startDate);
             customAdapterColtivazioni.add(prodotto);
         }
 

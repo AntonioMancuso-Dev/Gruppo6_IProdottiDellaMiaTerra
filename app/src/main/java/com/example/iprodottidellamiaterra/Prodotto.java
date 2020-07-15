@@ -6,13 +6,13 @@ public class Prodotto {
     String descr;
     String qnt;
     String info;
+    Date startDate;
     int tempo;
 
-    public Prodotto(String descr, String qnt, String info, int tempo) {
+    public Prodotto(String descr, String info, Date startDate) {
         this.descr = descr;
-        this.qnt = qnt;
         this.info = info;
-        this.tempo = tempo;
+        this.startDate = startDate;
     }
 
     public Prodotto(String descr, String qnt) {
@@ -46,7 +46,7 @@ public class Prodotto {
     }
 
     public int getTempo() {
-        return tempo;
+        return (int) ((new Date().getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     }
 
     public void setTempo(int tempo) {

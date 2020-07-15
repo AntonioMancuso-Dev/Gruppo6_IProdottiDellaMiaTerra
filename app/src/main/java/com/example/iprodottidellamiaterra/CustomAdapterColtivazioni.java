@@ -31,8 +31,12 @@ public class CustomAdapterColtivazioni extends ArrayAdapter<Prodotto> {
         descr.setText(p.getDescr());
 
         TextView tempo = v.findViewById(R.id.textViewColtTempo);
-        tempo.setText(p.getTempo() + " giorni");
-
+        if (p.getTempo() == 1) {
+            tempo.setText(p.getTempo() + " giorno");
+        }
+        else{
+            tempo.setText(p.getTempo() + " giorni");
+        }
         return v;
     }
 }

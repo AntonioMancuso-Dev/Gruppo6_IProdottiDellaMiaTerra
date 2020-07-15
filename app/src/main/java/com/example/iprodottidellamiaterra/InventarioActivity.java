@@ -64,7 +64,7 @@ public class InventarioActivity extends AppCompatActivity {
                     String k2 = entry2.getKey();
                     int info2 =  (Integer)entry2.getValue();
 
-                    eq = k2.startsWith(query);
+                    eq = k2.toUpperCase().startsWith(query.toUpperCase());
                     /*
                     for (int i = 0; i < qryLngt; i++) {
                         if (k2.toUpperCase().substring(0, qryLngt).equals(query.toUpperCase())) {
